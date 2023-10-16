@@ -1,31 +1,33 @@
-#3.1 Write a function called linear_search_product that takes the list of products and a target product name as input. The function should perform a linear search to find the target product in the list and return a list of indices of all occurrences of the product if found, or an empty list if the product is not found.
-
-def linear_search_product(product_list, target_product):
-
-    indices = []
-
-    for i, product in enumerate(product_list):
-
-        if product == target_product:
-
-            indices.append(i)
-
-    return indices
-
-
-
-# Example usage:
-
-products = ["apple", "banana", "apple", "orange", "apple"]
-
-target = "apple"
-
-result = linear_search_product(products, target)
-
-if result:
-
-    print(f"The product '{target}' was found at indices: {result}")
-
-else:
-
-    print(f"The product '{target}' was not found in the list.")
+# BankAccount class
+class BankAccount:
+    def __init__(self, account_number, account_holder_name, initial_balance=0.0):
+        self.__account_number = account_number
+        self.__account_holder_name = account_holder_name
+        self.__account_balance = initial_balance
+    def deposit(self, amount):
+        if amount > 0:
+            self.__account_balance += amount
+            print(f"Deposited ${amount:.2f} into account {self.__account_number}")
+        else:
+            print("Invalid deposit amount. Please deposit a positive amount.")
+    def withdraw(self, amount):
+        if amount > 0:
+            if self.__account_balance >= amount:
+                self.__account_balance -= amount
+                print(f"Withdrew ${amount:.2f} from account {self.__account_number}")
+            else:
+                print("Insufficient balance. Cannot withdraw.")
+        else:
+            print("Invalid withdrawal amount. Please withdraw a positive amount.")
+    def display_balance(self):
+        print(f"Account {self.__account_number} balance: ${self.__account_balance:.2f}")
+# Testing the BankAccount class
+if __name__ == "__main__":
+    # Create a BankAccount instance
+    account1 = BankAccount("123456", "John Doe", 1000.0)
+    # Deposit money
+    account1.deposit(500.0)
+    # Withdraw money
+    account1.withdraw(200.0)
+    # Display balance
+    account1.display_balance()
