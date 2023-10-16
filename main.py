@@ -1,24 +1,31 @@
-#1.1 implement a recursive function to calculate the factorial of a given number
+#3.1 Write a function called linear_search_product that takes the list of products and a target product name as input. The function should perform a linear search to find the target product in the list and return a list of indices of all occurrences of the product if found, or an empty list if the product is not found.
 
-"""
-1!=1×1
-2!=2×1!--->2×1
-3!=3×2!--->3×2×1
-.
-.
-10!=10×9!--->10×9×8×...×1
+def linear_search_product(product_list, target_product):
 
-Formula-n×(n-1)!
-"""
+    indices = []
+
+    for i, product in enumerate(product_list):
+
+        if product == target_product:
+
+            indices.append(i)
+
+    return indices
 
 
-def fact_rec(n):
-  if n==0 or n==1:
-    return 1
-  else:
-    return n*fact_rec(n-1)
 
-number=int(input("Enter a value:"))
-res=fact_rec(number)
+# Example usage:
 
-print("The factorial of{} is {}.".format(number,res))
+products = ["apple", "banana", "apple", "orange", "apple"]
+
+target = "apple"
+
+result = linear_search_product(products, target)
+
+if result:
+
+    print(f"The product '{target}' was found at indices: {result}")
+
+else:
+
+    print(f"The product '{target}' was not found in the list.")
